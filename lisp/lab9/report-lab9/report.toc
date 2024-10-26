@@ -1,0 +1,11 @@
+\babel@toc {russian}{}\relax 
+\contentsline {chapter}{ВВЕДЕНИЕ}{4}{Doc-Start}%
+\contentsline {chapter}{\numberline {1}Аналитическая часть}{5}{chapter.1}%
+\contentsline {subsection}{\numberline {1.0.1}Векторное произведение векторов}{5}{subsection.1.0.1}%
+\contentsline {subsection}{\numberline {1.0.2}Декартово произведение множеств}{5}{subsection.1.0.2}%
+\contentsline {subsection}{\numberline {1.0.3}Перевод числа из \(N\)-ричной системы счисления в десятичную}{5}{subsection.1.0.3}%
+\contentsline {chapter}{\numberline {2}Технологическая часть}{7}{chapter.2}%
+\contentsline {subsection}{\numberline {2.0.1}Листинг функций}{7}{subsection.2.0.1}%
+\contentsline {subsection}{\numberline {2.0.2}Примеры использования и результаты тестов}{7}{subsection.2.0.2}%
+\contentsline {chapter}{ЗАКЛЮЧЕНИЕ}{9}{lstnumber.2.3.1}%
+\contentsline {chapter}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}{10}{lstnumber.2.3.1}%

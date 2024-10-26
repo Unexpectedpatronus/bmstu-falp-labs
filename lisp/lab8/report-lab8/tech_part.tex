@@ -1,0 +1,34 @@
+\chapter{Технологическая часть}
+
+\section{Описание функций}
+Программа реализована с использованием функций на языке Common Lisp. Основные функции:
+\begin{itemize}
+	\item \texttt{discriminant} — вычисляет дискриминант уравнения.
+	\item \texttt{quadratic-solution} — находит корни уравнения в зависимости от значения дискриминанта.
+	\item \texttt{solve-quadratic-apply} и \texttt{solve-quadratic-funcall} — вызывают функцию решения уравнения с использованием функций \texttt{apply} и \texttt{funcall}.
+\end{itemize}
+
+\section{Код программы}
+\begin{lstlisting}[language=Lisp, caption={Функции для нахождения корней квадратного уравнения}]
+	(defun discriminant (a b c)
+	  (- (* b b) (* 4 a c)))
+	
+	(defun quadratic-solution (a b d)
+	  (let ((sqrt-d (sqrt (abs d)))
+	        (denom (* 2 a)))
+	    (if (>= d 0)
+	        (list (/ (+ (- b) sqrt-d) denom)
+	              (/ (- (- b) sqrt-d) denom))
+	        (list (complex (/ (- b) denom) (/ sqrt-d denom))
+          	      (complex (/ (- b) denom) (- (/ sqrt-d denom)))))))
+	
+	(defun solve-quadratic-apply (a b c)
+	  (let ((d (discriminant a b c)))
+	    (apply #'quadratic-solution (list a b d))))
+	
+	(defun solve-quadratic-funcall (a b c)
+	  (let ((d (discriminant a b c)))
+	    (funcall #'quadratic-solution a b d)))
+\end{lstlisting}
+
+

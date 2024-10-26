@@ -1,0 +1,53 @@
+\chapter{Технологическая часть}
+
+В данном разделе приведены листинги программного кода, реализующего задачи, рассмотренные в аналитическом разделе, а также примеры использования функций с выводом полученных результатов.
+
+\subsection{Листинг функций}
+\begin{lstlisting}[language=Lisp]
+	(defun cross-product (vec1 vec2)
+	  (let* ((indices '((1 2) (2 0) (0 1)))
+	    (components (mapcar (lambda (idx)
+	      (- (* (nth (first idx) vec1) (nth (second idx) vec2))
+	         (* (nth (second idx) vec1) (nth (first idx) vec2))))
+	               indices)))
+	  components))
+	
+	(defun cartesian-product (list1 list2)
+	  (reduce #'append
+	      (mapcar (lambda (x) (mapcar (lambda (y) (list x y)) list2))
+      	       list1)))
+	
+	(defun base-n-to-decimal (digits base)
+	  (reduce (lambda (acc digit) 
+	      (+ (* acc base) digit)) digits))
+	
+\end{lstlisting}
+
+\subsection{Примеры использования и результаты тестов}
+\subsubsection*{Пример 1: Векторное произведение}
+Рассмотрим результат выполнения функции для вычисления векторного произведения двух векторов:
+
+\begin{lstlisting}[language=Lisp,caption={Векторное произведение}]
+	(cross-product '(1 2 3) '(4 5 6)) 
+\end{lstlisting}
+
+Результат: \((-3 \; 6 \; -3)\).
+
+\subsubsection*{Пример 2: Декартово произведение множеств}
+Рассмотрим результат выполнения функции для вычисления декартова произведения множеств \((1, 2)\) и \((3, 4)\):
+
+\begin{lstlisting}[language=Lisp,caption={Декартово произведение}]
+	(cartesian-product '(1 2) '(3 4)) 
+\end{lstlisting}
+
+Результат: \(((1 \; 3) \; (1 \; 4) \; (2 \; 3) \; (2 \; 4))\).
+
+\subsubsection*{Пример 3: Перевод числа из \(N\)-ричной системы счисления в десятичную}
+Рассмотрим перевод числа \(1011\) из двоичной системы в десятичную:
+
+\begin{lstlisting}[language=Lisp,caption={Перевод числа в десятичную систему счисления}]
+	(base-n-to-decimal '(1 0 1 1) 2) 
+\end{lstlisting}
+
+Результат: \(11\).
+

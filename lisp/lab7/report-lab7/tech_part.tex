@@ -1,0 +1,42 @@
+\chapter{Технологическая часть}
+
+В этом разделе представлены реализации функций для вычисления чисел Фибоначчи и факториала на языке Common Lisp с использованием как хвостовой, так и обычной рекурсии.
+
+\subsection{Реализация функции Фибоначчи}
+Обычная рекурсия:
+\begin{lstlisting}[language=Lisp, caption={Функция Фибоначчи с обычной рекурсией}]
+	(defun fibonacci (n)
+	  (if (<= n 1)
+	      n
+	      (+ (fibonacci (- n 1)) (fibonacci (- n 2)))))
+\end{lstlisting}
+
+Хвостовая рекурсия:
+\begin{lstlisting}[language=Lisp, caption={Функция Фибоначчи с хвостовой рекурсией}]
+	(defun fibonacci-tail (n &optional (a 0) (b 1))
+	  (if (= n 0)
+	      a
+	      (fibonacci-tail (- n 1) b (+ a b))))
+\end{lstlisting}
+
+В первой функции `fibonacci` результат вычисляется после всех рекурсивных вызовов, что делает её обычной рекурсией. Во второй функции `fibonacci-tail` результат вычисляется в аккумуляторе и передаётся на каждом шаге, что делает её хвостовой.
+
+\subsection{Реализация функции факториала}
+Обычная рекурсия:
+\begin{lstlisting}[language=Lisp, caption={Функция факториала с обычной рекурсией}]
+	(defun factorial (n)
+	  (if (<= n 1)
+	      1
+	      (* n (factorial (- n 1)))))
+\end{lstlisting}
+
+Хвостовая рекурсия:
+\begin{lstlisting}[language=Lisp, caption={Функция факториала с хвостовой рекурсией}]
+	(defun factorial-tail (n &optional (acc 1))
+	  (if (<= n 1)
+	      acc
+	      (factorial-tail (- n 1) (* acc n))))
+\end{lstlisting}
+
+В функции `factorial` используется обычная рекурсия, где вычисление происходит после возвращения значений из всех вложенных вызовов. В функции `factorial-tail` результат передаётся через аккумулятор `acc`, что делает её хвостовой.
+
